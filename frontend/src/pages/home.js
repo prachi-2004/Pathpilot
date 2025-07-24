@@ -1,7 +1,7 @@
 // frontend/src/pages/Home.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Users, Award, BookOpen } from 'lucide-react';
+import { Search, Users, Award, BookOpen, Target } from 'lucide-react';
 
 const Home = () => {
   const features = [
@@ -33,6 +33,22 @@ const Home = () => {
           <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
             Discover personalized learning paths designed to help you achieve your career goals and unlock your potential
           </p>
+          
+          {/* Career Quiz Button */}
+          <div className="mb-12">
+            <Link 
+              to="/career-quiz"
+              className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors shadow-lg"
+            >
+              <Target className="h-6 w-6 mr-2" />
+              Find Your Perfect Career Path
+              <span className="ml-2 text-sm bg-yellow-400 text-yellow-900 px-2 py-1 rounded-full">
+                New
+              </span>
+            </Link>
+            <p className="mt-3 text-blue-200">Take our 5-minute quiz to discover your ideal career path</p>
+          </div>
+          
           <div className="max-w-2xl mx-auto relative">
             <div className="relative flex items-center">
               <Search className="absolute left-4 h-5 w-5 text-gray-400" />

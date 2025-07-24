@@ -9,6 +9,9 @@ import Register from './pages/register';
 import Dashboard from './pages/dashboard';
 import LearningPaths from './pages/LearningPaths';
 import PathDetails from './pages/PathDetails';
+import QuizList from './pages/QuizList';
+import QuizTaking from './pages/QuizTaking';
+import CareerQuiz from './pages/CareerQuiz';
 import { AuthProvider } from './context/AuthContext';
 import './App.css';
 
@@ -26,6 +29,9 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/paths" element={<LearningPaths />} />
               <Route path="/paths/:id" element={<PathDetails />} />
+              <Route path="/courses/:courseId/quizzes" element={<QuizList />} />
+              <Route path="/quizzes/:quizId/take" element={<QuizTaking />} />
+              <Route path="/career-quiz" element={<CareerQuiz />} />
             </Routes>
           </main>
           <Footer />

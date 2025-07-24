@@ -22,4 +22,11 @@ api.interceptors.request.use(
   }
 );
 
+// Quiz-specific API calls
+export const quizAPI = {
+  getQuizzesByCourse: (courseId) => api.get(`/courses/${courseId}/quizzes`),
+  getQuiz: (quizId) => api.get(`/quizzes/${quizId}`),
+  submitQuiz: (quizId, answers) => api.post(`/quizzes/${quizId}/submit`, { answers })
+};
+
 export default api;
