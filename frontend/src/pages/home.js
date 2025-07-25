@@ -1,7 +1,7 @@
 // frontend/src/pages/Home.js
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Search, Users, Award, BookOpen, Target } from 'lucide-react';
+import { Search, Users, Award, BookOpen, Target, Shield, Bot, Map, Briefcase } from 'lucide-react';
 
 const Home = () => {
   const features = [
@@ -19,6 +19,34 @@ const Home = () => {
       icon: <Award className="h-8 w-8 text-blue-600" />,
       title: "Certification",
       description: "Earn recognized certificates to showcase your achievements"
+    }
+  ];
+
+  const pathpilotFeatures = [
+    {
+      icon: <Shield className="h-8 w-8 text-blue-600" />,
+      title: "🔐 User Authentication (JWT)",
+      description: "Secure login and registration with JSON Web Tokens"
+    },
+    {
+      icon: <Target className="h-8 w-8 text-blue-600" />,
+      title: "🎯 Adaptive Career Quiz",
+      description: "Personalized career assessment that adapts to your responses"
+    },
+    {
+      icon: <Bot className="h-8 w-8 text-blue-600" />,
+      title: "🧠 AI-powered Career Recommendations",
+      description: "Intelligent suggestions based on your skills and interests"
+    },
+    {
+      icon: <Map className="h-8 w-8 text-blue-600" />,
+      title: "🛣️ Personalized Learning Roadmaps",
+      description: "Custom learning paths tailored to your career goals"
+    },
+    {
+      icon: <Briefcase className="h-8 w-8 text-blue-600" />,
+      title: "💼 Real-Time Job Listings",
+      description: "Up-to-date job opportunities matching your profile"
     }
   ];
 
@@ -88,8 +116,45 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* PathPilot Features Section */}
       <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Powerful Features</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Discover the tools that make PathPilot the ultimate career navigation platform
+            </p>
+            <Link 
+              to="/features" 
+              className="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium"
+            >
+              View all features →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+            {pathpilotFeatures.map((feature, index) => (
+              <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex justify-center mb-4">
+                  {feature.icon}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
+                <p className="text-gray-600 text-sm">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link 
+              to="/features"
+              className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+            >
+              Explore All Features
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Ready to Start Your Learning Journey?

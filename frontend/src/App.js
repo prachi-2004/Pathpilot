@@ -12,6 +12,7 @@ import PathDetails from './pages/PathDetails';
 import QuizList from './pages/QuizList';
 import QuizTaking from './pages/QuizTaking';
 import CareerQuiz from './pages/CareerQuiz';
+import Features from './pages/Features';
 import { AuthProvider } from './context/AuthContext';
 import './App.css';
 
@@ -32,6 +33,7 @@ function App() {
               <Route path="/courses/:courseId/quizzes" element={<QuizList />} />
               <Route path="/quizzes/:quizId/take" element={<QuizTaking />} />
               <Route path="/career-quiz" element={<CareerQuiz />} />
+              <Route path="/features" element={<Features />} /> 
             </Routes>
           </main>
           <Footer />
