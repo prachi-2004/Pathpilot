@@ -30,5 +30,4 @@
 - JWT Authentication
 - OpenAI API (for chatbot + sentiment)
 
-## 📂 Folder Structure
 
