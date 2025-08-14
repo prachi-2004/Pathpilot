@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "**PathPilot** is an AI-powered career guidance platform built with React and Node.js that helps users discover ideal career paths based on their interests, skills, and preferences. It generates personalized learning roadmaps, job suggestions, and offers intelligent career planning tools.",
   "main": "index.js",
-  "dependencies": {
-    "http-server": "^1.0.0"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "http-server"
@@ -20,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/prachi-2004/Pathpilot/issues"
   },
-  "homepage": "https://github.com/prachi-2004/Pathpilot#readme"
+  "homepage": "https://github.com/prachi-2004/Pathpilot#readme",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
 }
