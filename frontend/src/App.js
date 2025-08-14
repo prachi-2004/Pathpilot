@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/header';
 import Footer from './components/footer';
+import ScrollToTop from "./components/ScrollToTop"; 
 import Home from './pages/home';
 import Login from './pages/login';
 import Register from './pages/register';
@@ -23,6 +24,7 @@ function App() {
         <div className="min-h-screen flex flex-col bg-gray-50">
           <Header />
           <main className="flex-grow">
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
