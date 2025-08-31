@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
 
-const Button = ({ children, onClick, variant = 'primary', disabled = false }) => {
+const Button = ({ onClick, children }) => {
   return (
-    <button 
-      className={`btn btn-${variant}`}
+    <button
       onClick={onClick}
-      disabled={disabled}
+      className="px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold shadow-md hover:bg-indigo-500 transition"
     >
       {children}
     </button>

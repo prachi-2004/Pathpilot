@@ -10,10 +10,12 @@ import Register from './pages/register';
 import Dashboard from './pages/dashboard';
 import LearningPaths from './pages/LearningPaths';
 import PathDetails from './pages/PathDetails';
-import QuizList from './pages/QuizList';
-import QuizTaking from './pages/QuizTaking';
-import CareerQuiz from './pages/CareerQuiz';
 import Features from './pages/Features';
+import QuizInterests from "./pages/QuizInterests";
+import QuizAbilities from "./pages/QuizAbilities";
+import QuizWorkActivities from "./pages/QuizWorkActivities";
+import Results from "./pages/Results";
+import { QuizProvider } from "./context/QuizContext";
 import { AuthProvider } from './context/AuthContext';
 import './App.css';
 
@@ -25,6 +27,8 @@ function App() {
           <Header />
           <main className="flex-grow">
             <ScrollToTop />
+            <QuizProvider>
+      {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
@@ -32,11 +36,14 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/paths" element={<LearningPaths />} />
               <Route path="/paths/:id" element={<PathDetails />} />
-              <Route path="/courses/:courseId/quizzes" element={<QuizList />} />
-              <Route path="/quizzes/:quizId/take" element={<QuizTaking />} />
-              <Route path="/career-quiz" element={<CareerQuiz />} />
               <Route path="/features" element={<Features />} /> 
+              <Route path="/quiz/interests" element={<QuizInterests />} />
+              <Route path="/quiz/abilities" element={<QuizAbilities />} />
+              <Route path="/quiz/work-activities" element={<QuizWorkActivities />} />
+              <Route path="/results" element={<Results />} />
             </Routes>
+            }
+    </QuizProvider>
           </main>
           <Footer />
         </div>

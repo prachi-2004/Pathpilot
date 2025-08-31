@@ -1,174 +1,104 @@
 // frontend/src/pages/Home.js
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Search, Users, Award, BookOpen, Target, Shield, Bot, Map, Briefcase } from 'lucide-react';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "../components/button";
+import { Rocket, Target, BookOpen, BarChart } from "lucide-react";
 
 const Home = () => {
-  const features = [
-    {
-      icon: <BookOpen className="h-8 w-8 text-blue-600" />,
-      title: "Personalized Paths",
-      description: "Custom learning journeys tailored to your goals and skill level"
-    },
-    {
-      icon: <Users className="h-8 w-8 text-blue-600" />,
-      title: "Expert Instructors",
-      description: "Learn from industry professionals with real-world experience"
-    },
-    {
-      icon: <Award className="h-8 w-8 text-blue-600" />,
-      title: "Certification",
-      description: "Earn recognized certificates to showcase your achievements"
-    }
-  ];
+  const navigate = useNavigate();
 
-  const pathpilotFeatures = [
-    {
-      icon: <Shield className="h-8 w-8 text-blue-600" />,
-      title: "🔐 User Authentication (JWT)",
-      description: "Secure login and registration with JSON Web Tokens"
-    },
-    {
-      icon: <Target className="h-8 w-8 text-blue-600" />,
-      title: "🎯 Adaptive Career Quiz",
-      description: "Personalized career assessment that adapts to your responses"
-    },
-    {
-      icon: <Bot className="h-8 w-8 text-blue-600" />,
-      title: "🧠 AI-powered Career Recommendations",
-      description: "Intelligent suggestions based on your skills and interests"
-    },
-    {
-      icon: <Map className="h-8 w-8 text-blue-600" />,
-      title: "🛣️ Personalized Learning Roadmaps",
-      description: "Custom learning paths tailored to your career goals"
-    },
-    {
-      icon: <Briefcase className="h-8 w-8 text-blue-600" />,
-      title: "💼 Real-Time Job Listings",
-      description: "Up-to-date job opportunities matching your profile"
-    }
-  ];
+  // Updated: handleQuizClick now takes quizType
+  const handleQuizClick = (quizType) => {
+    console.log(`${quizType} Quiz Button Clicked`);
+    navigate(`/quiz/${quizType}`);
+  };
 
   return (
-    <div className="min-h-screen">
+    <div className="flex flex-col min-h-screen bg-gray-900 text-gray-200">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Navigate Your Learning Journey
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-            Discover personalized learning paths designed to help you achieve your career goals and unlock your potential
-          </p>
-          
-          {/* Career Quiz Button */}
-          <div className="mb-12">
-            <Link 
-              to="/career-quiz"
-              className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-bold hover:bg-gray-100 transition-colors shadow-lg"
-            >
-              <Target className="h-6 w-6 mr-2" />
-              Find Your Perfect Career Path
-              <span className="ml-2 text-sm bg-yellow-400 text-yellow-900 px-2 py-1 rounded-full">
-                New
-              </span>
-            </Link>
-            <p className="mt-3 text-blue-200">Take our 5-minute quiz to discover your ideal career path</p>
-          </div>
-          
-          <div className="max-w-2xl mx-auto relative">
-            <div className="relative flex items-center">
-              <Search className="absolute left-4 h-5 w-5 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search for paths, skills, or instructors..."
-                className="w-full pl-12 pr-4 py-4 text-gray-900 rounded-xl text-lg focus:outline-none focus:ring-4 focus:ring-blue-300"
-              />
-              <button className="absolute right-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors">
-                Search
-              </button>
-            </div>
-          </div>
-        </div>
+      <section className="flex flex-col items-center justify-center flex-grow bg-gradient-to-r from-gray-800 to-gray-700 text-white text-center py-20 px-6">
+        <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          Welcome to PathPilot 🚀
+        </h1>
+        <p className="text-lg md:text-xl mb-8 max-w-2xl">
+          Your AI-powered career path recommender for a brighter future.
+        </p>
+        <Link
+          to="/dashboard"
+          className="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-indigo-500 transition"
+        >
+          Get Started
+        </Link>
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose PathPilot?</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              We provide the tools and resources you need to succeed in your learning journey
+      <section className="py-16 px-6 bg-gray-800">
+        <h2 className="text-3xl font-bold text-center mb-12 text-white">
+          Why Choose PathPilot?
+        </h2>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+          <div className="bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+            <Rocket className="h-10 w-10 text-indigo-400 mb-4" />
+            <h3 className="text-xl font-semibold mb-2">AI Career Paths</h3>
+            <p className="text-gray-300">
+              Smart recommendations tailored to your skills and interests.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="text-center p-6 rounded-xl hover:shadow-lg transition-shadow">
-                <div className="flex justify-center mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </div>
-            ))}
+
+          <div className="bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+            <Target className="h-10 w-10 text-indigo-400 mb-4" />
+            <h3 className="text-xl font-semibold mb-2">Adaptive Quiz</h3>
+            <p className="text-gray-300">
+              Discover your strengths with an interactive career quiz.
+            </p>
+          </div>
+
+          <div className="bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+            <BookOpen className="h-10 w-10 text-indigo-400 mb-4" />
+            <h3 className="text-xl font-semibold mb-2">Dashboard</h3>
+            <p className="text-gray-300">
+              Track your learning journey and job opportunities in one place.
+            </p>
+          </div>
+
+          <div className="bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+            <BarChart className="h-10 w-10 text-indigo-400 mb-4" />
+            <h3 className="text-xl font-semibold mb-2">Progress Tracker</h3>
+            <p className="text-gray-300">
+              Visualize your growth with insights and performance reports.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* PathPilot Features Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Powerful Features</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Discover the tools that make PathPilot the ultimate career navigation platform
+      {/* Quiz Section */}
+      <section className="py-16 px-6 bg-gray-900">
+        <h2 className="text-3xl font-bold text-center mb-12 text-white">
+          Explore Career Possibilities
+        </h2>
+        <div className="grid gap-8 md:grid-cols-3 max-w-6xl mx-auto">
+          <div className="bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+            <h3 className="text-xl font-semibold mb-2">Interests</h3>
+            <p className="text-gray-300 mb-4">
+              See where your interests lie, and explore what type of jobs would suit you well.
             </p>
-            <Link 
-              to="/features" 
-              className="inline-block mt-4 text-blue-600 hover:text-blue-800 font-medium"
-            >
-              View all features →
-            </Link>
+            <Button onClick={() => handleQuizClick("interests")}>Take the quiz</Button>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-            {pathpilotFeatures.map((feature, index) => (
-              <div key={index} className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex justify-center mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link 
-              to="/features"
-              className="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
-            >
-              Explore All Features
-            </Link>
-          </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Ready to Start Your Learning Journey?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join thousands of learners who have transformed their careers with PathPilot
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/register" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg font-medium transition-colors">
-              Get Started Free
-            </Link>
-            <Link to="/paths" className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-blue-50 transition-colors">
-              Browse Paths
-            </Link>
+          <div className="bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+            <h3 className="text-xl font-semibold mb-2">Abilities</h3>
+            <p className="text-gray-300 mb-4">
+              Leverage your strengths. Find out what you are great at, and explore careers that allow you to use your top skills.
+            </p>
+            <Button onClick={() => handleQuizClick("abilities")}>Take the quiz</Button>
+          </div>
+
+          <div className="bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition">
+            <h3 className="text-xl font-semibold mb-2">Work Activities</h3>
+            <p className="text-gray-300 mb-4">
+              Choose how you prefer to work with data, people, and things, and get a list of possible career options to explore.
+            </p>
+            <Button onClick={() => handleQuizClick("work-activities")}>Take the quiz</Button>
           </div>
         </div>
       </section>
