@@ -1,54 +1,54 @@
-import React, { useContext, useState } from "react";
-import { QuizContext } from "../context/QuizContext";
+import { useContext, useState } from "react";
+import { QuizContext } from "../context/QuizContext.jsx";
 import { useNavigate } from "react-router-dom";
 
-const QuizWorkActivities = () => {
+const QuizAbilities = () => {
   const { setAnswers } = useContext(QuizContext);
   const navigate = useNavigate();
   const [selected, setSelected] = useState([]);
 
-  const activities = [
-    "People",
-    "Data",
-    "Things",
-    "Predictable",
-    "Unpredictable",
-    "Solo",
-    "Team-Based",
+  const abilities = [
+    "Creative Problem-Solving",
+    "Team Leadership",
+    "Attention to Detail",
+    "Data Analysis",
+    "Public Speaking & Communication",
   ];
 
-  const toggleSelect = (activity) => {
+  const toggleSelect = (ability) => {
     setSelected((prev) =>
-      prev.includes(activity)
-        ? prev.filter((item) => item !== activity)
-        : [...prev, activity]
+      prev.includes(ability)
+        ? prev.filter((item) => item !== ability)
+        : [...prev, ability]
     );
   };
 
   const finishQuiz = () => {
     setAnswers((prev) => ({
       ...prev,
-      workActivities: selected,
+      abilities: selected,
     }));
     navigate("/results");
   };
 
   return (
     <div className="p-6 max-w-2xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6">Work Activities Quiz</h2>
-      <p className="mb-4 text-gray-600">Choose the work styles and environments you prefer:</p>
+      <h2 className="text-2xl font-bold mb-6">Abilities Quiz</h2>
+      <p className="mb-4 text-gray-600">
+        Select the abilities that describe you best:
+      </p>
       <div className="grid gap-4">
-        {activities.map((activity, idx) => (
+        {abilities.map((ability, idx) => (
           <button
             key={idx}
-            onClick={() => toggleSelect(activity)}
+            onClick={() => toggleSelect(ability)}
             className={`p-3 rounded-lg border ${
-              selected.includes(activity)
+              selected.includes(ability)
                 ? "bg-blue-600 text-white"
                 : "bg-gray-100 hover:bg-gray-200"
             }`}
           >
-            {activity}
+            {ability}
           </button>
         ))}
       </div>
@@ -62,4 +62,4 @@ const QuizWorkActivities = () => {
   );
 };
 
-export default QuizWorkActivities;
+export default QuizAbilities;

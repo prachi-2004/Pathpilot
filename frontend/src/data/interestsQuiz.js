@@ -7,8 +7,8 @@ const interestsQuiz = [
       "Science & Research",
       "Business & Finance",
       "Social & Community",
-      "Health & Wellness"
-    ]
+      "Health & Wellness",
+    ],
   },
   {
     question: "In your free time, you'd most likely be found...",
@@ -17,8 +17,8 @@ const interestsQuiz = [
       "Creating art, writing stories, or playing music.",
       "Solving a complex puzzle or learning a new theory.",
       "Reading about the stock market or a new business strategy.",
-      "Volunteering for a cause or organizing a community event."
-    ]
+      "Volunteering for a cause or organizing a community event.",
+    ],
   },
   {
     question: "Would you prefer a job where you...",
@@ -27,8 +27,8 @@ const interestsQuiz = [
       "Have a chance to be creative every day.",
       "Are challenged to discover new information.",
       "Negotiate deals and make strategic decisions.",
-      "Work directly with people to solve their problems."
-    ]
+      "Work directly with people to solve their problems.",
+    ],
   },
   {
     question: "In which you are most interested?",
@@ -37,8 +37,8 @@ const interestsQuiz = [
       "Space Exploration",
       "Renewable Energy",
       "Digital Marketing",
-      "Graphic Design"
-    ]
+      "Graphic Design",
+    ],
   },
   {
     question: "Which of these activities sounds most appealing?",
@@ -47,9 +47,9 @@ const interestsQuiz = [
       "Curating a gallery of art exhibits.",
       "Conducting a long-term scientific study.",
       "Launching a startup from the ground up.",
-      "Leading a project that helps a community."
-    ]
-  }
+      "Leading a project that helps a community.",
+    ],
+  },
 ];
 
 export default interestsQuiz;

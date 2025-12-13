@@ -1,6 +1,4 @@
-// src/components/QuizQuestion.js
-import React from "react";
-
+// src/components/QuizQuestion.jsx
 const QuizQuestion = ({ question, selectedOption, onAnswer }) => {
   return (
     <div className="p-4 mb-4 rounded-xl bg-gray-800 text-white">
@@ -11,7 +9,11 @@ const QuizQuestion = ({ question, selectedOption, onAnswer }) => {
             <button
               onClick={() => onAnswer(option)}
               className={`w-full text-left p-2 rounded-lg border 
-                ${selectedOption === option ? "bg-purple-600 border-purple-400" : "bg-gray-700 border-gray-600"} 
+                ${
+                  selectedOption === option
+                    ? "bg-purple-600 border-purple-400"
+                    : "bg-gray-700 border-gray-600"
+                } 
                 hover:bg-purple-500`}
             >
               {option}

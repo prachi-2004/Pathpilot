@@ -1,13 +1,13 @@
-// frontend/src/context/AuthContext.js
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import api from '../services/api';
+// frontend/src/context/AuthContext.jsx
+import { createContext, useContext, useState, useEffect } from "react";
+import api from "../services/api.js";
 
 const AuthContext = createContext();
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };
@@ -18,15 +18,16 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     // Check if user is logged in (from localStorage or API)
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       // Verify token and fetch user data
-      api.get('/auth/me')
-        .then(response => {
+      api
+        .get("/auth/me")
+        .then((response) => {
           setUser(response.data.user);
         })
         .catch(() => {
-          localStorage.removeItem('token');
+          localStorage.removeItem("token");
         })
         .finally(() => {
           setLoading(false);
@@ -37,23 +38,27 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (email, password) => {
-    const response = await api.post('/auth/login', { email, password });
+    const response = await api.post("/auth/login", { email, password });
     const { token, user } = response.data;
-    localStorage.setItem('token', token);
+    localStorage.setItem("token", token);
     setUser(user);
     return response.data;
   };
 
   const register = async (username, email, password) => {
-    const response = await api.post('/auth/register', { username, email, password });
+    const response = await api.post("/auth/register", {
+      username,
+      email,
+      password,
+    });
     const { token, user } = response.data;
-    localStorage.setItem('token', token);
+    localStorage.setItem("token", token);
     setUser(user);
     return response.data;
   };
 
   const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setUser(null);
   };
 
@@ -62,7 +67,7 @@ export const AuthProvider = ({ children }) => {
     login,
     register,
     logout,
-    loading
+    loading,
   };
 
   return (

@@ -1,7 +1,6 @@
-// frontend/src/pages/Home.js
-import React from "react";
+// frontend/src/pages/home.jsx
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../components/button";
+import Button from "../components/button.jsx";
 import { Rocket, Target, BookOpen, BarChart } from "lucide-react";
 
 const Home = () => {
@@ -80,25 +79,34 @@ const Home = () => {
           <div className="bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition">
             <h3 className="text-xl font-semibold mb-2">Interests</h3>
             <p className="text-gray-300 mb-4">
-              See where your interests lie, and explore what type of jobs would suit you well.
+              See where your interests lie, and explore what type of jobs would
+              suit you well.
             </p>
-            <Button onClick={() => handleQuizClick("interests")}>Take the quiz</Button>
+            <Button onClick={() => handleQuizClick("interests")}>
+              Take the quiz
+            </Button>
           </div>
 
           <div className="bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition">
             <h3 className="text-xl font-semibold mb-2">Abilities</h3>
             <p className="text-gray-300 mb-4">
-              Leverage your strengths. Find out what you are great at, and explore careers that allow you to use your top skills.
+              Leverage your strengths. Find out what you are great at, and
+              explore careers that allow you to use your top skills.
             </p>
-            <Button onClick={() => handleQuizClick("abilities")}>Take the quiz</Button>
+            <Button onClick={() => handleQuizClick("abilities")}>
+              Take the quiz
+            </Button>
           </div>
 
           <div className="bg-gray-700 p-6 rounded-xl shadow-md hover:shadow-lg transition">
             <h3 className="text-xl font-semibold mb-2">Work Activities</h3>
             <p className="text-gray-300 mb-4">
-              Choose how you prefer to work with data, people, and things, and get a list of possible career options to explore.
+              Choose how you prefer to work with data, people, and things, and
+              get a list of possible career options to explore.
             </p>
-            <Button onClick={() => handleQuizClick("work-activities")}>Take the quiz</Button>
+            <Button onClick={() => handleQuizClick("work-activities")}>
+              Take the quiz
+            </Button>
           </div>
         </div>
       </section>
