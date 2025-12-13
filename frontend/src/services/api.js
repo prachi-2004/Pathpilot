@@ -1,8 +1,10 @@
-// frontend/src/services/api.js
 import axios from "axios";
 
+// Vite environment variable
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 const api = axios.create({
-  baseURL: "http://localhost:5000/api", // Adjust to your backend URL
+  baseURL: `${API_BASE_URL}/api`,
   headers: {
     "Content-Type": "application/json",
   },
@@ -17,15 +19,17 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error) => {
-    return Promise.reject(error);
-  }
+  (error) => Promise.reject(error)
 );
 
 // Quiz-specific API calls
 export const quizAPI = {
-  getQuizzesByCourse: (courseId) => api.get(`/courses/${courseId}/quizzes`),
-  getQuiz: (quizId) => api.get(`/quizzes/${quizId}`),
+  getQuizzesByCourse: (courseId) =>
+    api.get(`/courses/${courseId}/quizzes`),
+
+  getQuiz: (quizId) =>
+    api.get(`/quizzes/${quizId}`),
+
   submitQuiz: (quizId, answers) =>
     api.post(`/quizzes/${quizId}/submit`, { answers }),
 };
