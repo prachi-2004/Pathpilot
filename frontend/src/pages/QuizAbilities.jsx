@@ -2,62 +2,142 @@ import { useContext, useState } from "react";
 import { QuizContext } from "../context/QuizContext.jsx";
 import { useNavigate } from "react-router-dom";
 
+const questions = [
+  {
+    question: "Which task do you complete most confidently?",
+    options: [
+      { text: "Writing or debugging code", ability: "technical" },
+      { text: "Solving logical or numerical problems", ability: "analytical" },
+      { text: "Creating designs or content", ability: "creative" },
+      { text: "Explaining concepts to others", ability: "communication" }
+    ]
+  },
+  {
+    question: "What do people often praise you for?",
+    options: [
+      { text: "Technical knowledge", ability: "technical" },
+      { text: "Logical thinking", ability: "analytical" },
+      { text: "Creativity", ability: "creative" },
+      { text: "Communication skills", ability: "communication" }
+    ]
+  },
+  {
+    question: "Which subject do you perform best in?",
+    options: [
+      { text: "Programming / Computer Science", ability: "technical" },
+      { text: "Mathematics / Statistics", ability: "analytical" },
+      { text: "Design / Arts", ability: "creative" },
+      { text: "English / Presentations", ability: "communication" }
+    ]
+  },
+  {
+    question: "When facing a problem, you usually:",
+    options: [
+      { text: "Build a technical solution", ability: "technical" },
+      { text: "Analyze it step by step", ability: "analytical" },
+      { text: "Think of innovative ideas", ability: "creative" },
+      { text: "Discuss it with others", ability: "communication" }
+    ]
+  },
+  {
+    question: "Which activity feels easiest for you?",
+    options: [
+      { text: "Learning new tools", ability: "technical" },
+      { text: "Working with data", ability: "analytical" },
+      { text: "Visualizing ideas", ability: "creative" },
+      { text: "Persuading people", ability: "communication" }
+    ]
+  },
+  {
+    question: "What strength best describes you?",
+    options: [
+      { text: "Technical efficiency", ability: "technical" },
+      { text: "Precision and accuracy", ability: "analytical" },
+      { text: "Original thinking", ability: "creative" },
+      { text: "Team communication", ability: "communication" }
+    ]
+  },
+  {
+    question: "In a team, you are usually the one who:",
+    options: [
+      { text: "Implements solutions", ability: "technical" },
+      { text: "Plans and evaluates", ability: "analytical" },
+      { text: "Generates ideas", ability: "creative" },
+      { text: "Coordinates people", ability: "leadership" }
+    ]
+  },
+  {
+    question: "Which task do you improve fastest at?",
+    options: [
+      { text: "Coding challenges", ability: "technical" },
+      { text: "Data analysis", ability: "analytical" },
+      { text: "Creative work", ability: "creative" },
+      { text: "Public speaking", ability: "communication" }
+    ]
+  },
+  {
+    question: "What do you feel most confident doing independently?",
+    options: [
+      { text: "Technical tasks", ability: "technical" },
+      { text: "Analytical tasks", ability: "analytical" },
+      { text: "Creative tasks", ability: "creative" },
+      { text: "Communication tasks", ability: "communication" }
+    ]
+  },
+  {
+    question: "Which ability would you proudly list as your top strength?",
+    options: [
+      { text: "Technical expertise", ability: "technical" },
+      { text: "Analytical thinking", ability: "analytical" },
+      { text: "Creativity", ability: "creative" },
+      { text: "Leadership", ability: "leadership" }
+    ]
+  }
+];
+
 const QuizAbilities = () => {
-  const { setAnswers } = useContext(QuizContext);
+  const { answers, setAnswers } = useContext(QuizContext);
   const navigate = useNavigate();
-  const [selected, setSelected] = useState([]);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
-  const abilities = [
-    "Creative Problem-Solving",
-    "Team Leadership",
-    "Attention to Detail",
-    "Data Analysis",
-    "Public Speaking & Communication",
-  ];
-
-  const toggleSelect = (ability) => {
-    setSelected((prev) =>
-      prev.includes(ability)
-        ? prev.filter((item) => item !== ability)
-        : [...prev, ability]
-    );
-  };
-
-  const finishQuiz = () => {
+  const handleOptionClick = (ability) => {
     setAnswers((prev) => ({
       ...prev,
-      abilities: selected,
+      abilities: {
+        ...prev.abilities,
+        [ability]: prev.abilities[ability] + 2
+      }
     }));
-    navigate("/results");
+
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      navigate("/results");
+    }
   };
 
+  const q = questions[currentQuestion];
+
   return (
-    <div className="p-6 max-w-2xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6">Abilities Quiz</h2>
+    <div className="p-6 max-w-xl mx-auto">
+      <h2 className="text-xl font-bold mb-2">Abilities Assessment</h2>
       <p className="mb-4 text-gray-600">
-        Select the abilities that describe you best:
+        Question {currentQuestion + 1} of {questions.length}
       </p>
-      <div className="grid gap-4">
-        {abilities.map((ability, idx) => (
+
+      <h3 className="text-lg font-semibold mb-4">{q.question}</h3>
+
+      <div className="flex flex-col gap-3">
+        {q.options.map((option, index) => (
           <button
-            key={idx}
-            onClick={() => toggleSelect(ability)}
-            className={`p-3 rounded-lg border ${
-              selected.includes(ability)
-                ? "bg-blue-600 text-white"
-                : "bg-gray-100 hover:bg-gray-200"
-            }`}
+            key={index}
+            onClick={() => handleOptionClick(option.ability)}
+            className="border rounded-lg p-3 text-left hover:bg-blue-50 transition"
           >
-            {ability}
+            {option.text}
           </button>
         ))}
       </div>
-      <button
-        onClick={finishQuiz}
-        className="mt-6 px-4 py-2 bg-green-600 text-white rounded-lg"
-      >
-        Finish Quiz
-      </button>
     </div>
   );
 };
